@@ -26,7 +26,7 @@ nets = dict(
 	     not (yield bitcoind.rpc_getinfo())['testnet']
         )),
 	SUBSIDY_FUNC=lambda height: __import__('digibyte_subsidy').GetBlockBaseValue(height),
-	POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('skein_hash').getPoWHash(data)),
+	POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('skeinhash').getPoWHash(data)),
 	BLOCK_PERIOD=30, # s
 	SYMBOL='DGB',
 	CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'digibyte') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/digibyte/') if platform.system() == 'Darwin' else os.path.expanduser('~/.digibyte'), 'digibyte.conf'),
@@ -46,7 +46,7 @@ nets = dict(
 	    'digibyteaddress' in (yield bitcoind.rpc_help())
         )),
 	SUBSIDY_FUNC=lambda height: __import__('digibyte_subsidy').GetBlockBaseValue(height),
-	POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('skein_hash').getPoWHash(data)),
+	POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('skeinhash').getPoWHash(data)),
 	BLOCK_PERIOD=30, # s
 	SYMBOL='DGB',
 	CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'digibyte') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/digibyte/') if platform.system() == 'Darwin' else os.path.expanduser('~/.digibyte'), 'digibyte.conf'),
